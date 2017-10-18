@@ -36,7 +36,8 @@ dict_of_subreddits = {
 	}
 
 def getLiveScores():
-	res = requests.get("http://www.livescores.com/soccer/england/premierleague")
+	#res = requests.get("http://www.livescores.com/soccer/england/premierleague")
+	res = requests.get("http://www.livescore.com/soccer/champions-league/")
 	res.raise_for_status()
 	soup = bs4.BeautifulSoup(res.text, 'html.parser')
 	return soup
@@ -53,7 +54,7 @@ def getPremierLeagueLinks(soup):
 		except IndexError:
 			pass
 	
-	matches = [x for x in list_of_links if 'premier-league' in x] #to get the match you want change team as a global variable. maybe later could do all premier league matches? or all matches?
+	matches = [x for x in list_of_links if 'champions-league' in x] #to get the match you want change team as a global variable. maybe later could do all premier league matches? or all matches?
 
 	return matches
 
