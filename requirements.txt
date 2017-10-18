@@ -10,6 +10,7 @@ Flask-OpenID==1.2.5
 Flask-SQLAlchemy==2.3.2
 Flask-WhooshAlchemy==0.56
 Flask-WTF==0.14.2
+gunicorn==19.6.0
 Jinja2==2.9.6
 praw==5.1.0
 prawcore==0.12.0
