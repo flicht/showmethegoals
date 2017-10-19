@@ -1,3 +1,5 @@
 german umlaut. e.g. mueller, muller
 common misspellings?
 first name last name swapping
+misnomers - olympiakos/olympiacos
+Which words to use for search (currently 1st word, but fails for e.g. AFC Bournemouth)

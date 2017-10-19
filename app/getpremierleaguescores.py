@@ -10,6 +10,8 @@ user_agent = 'my user agent'
 team = 'manchester united'
 team_replace = team.replace( ' ', '-')
 team_subreddit = 'reddevils'
+link = "http://www.livescores.com/soccer/england/premier-league"
+league = "premier-league"
 
 dict_of_subreddits = {
 	'afc bournemouth': '',
@@ -35,14 +37,14 @@ dict_of_subreddits = {
 
 	}
 
-def getLiveScores():
-	res = requests.get("http://www.livescores.com/soccer/champions-league")
+def getLiveScores(link=link):
+	res = requests.get(link)
 	res.raise_for_status()
 	soup = bs4.BeautifulSoup(res.text, 'html.parser')
 	return soup
 
 
-def getPremierLeagueLinks(soup):
+def getPremierLeagueLinks(soup, league=league):
 	links = soup.select('.row-gray') #find_all('div', attrs={'dat-type': 'evt'}).select('a') # alternatively can use data-type = evt
 	list_of_links = []
 
@@ -53,7 +55,7 @@ def getPremierLeagueLinks(soup):
 		except IndexError:
 			pass
 	
-	matches = [x for x in list_of_links if 'champions-league' in x] #to get the match you want change team as a global variable. maybe later could do all premier league matches? or all matches?
+	matches = [x for x in list_of_links if league in x] #to get the match you want change team as a global variable. maybe later could do all premier league matches? or all matches?
 
 	return matches
 
@@ -68,7 +70,7 @@ def getSoupFromLink(match):
 	return soup
 
 
-def getArsenalGame(soup):
+def getArsenalGame(soup, ):
 	links = soup.select('.row-gray') #find_all('div', attrs={'dat-type': 'evt'}).select('a') # alternatively can use data-type = evt
 	list_of_links = []
 

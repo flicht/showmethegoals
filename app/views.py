@@ -2,18 +2,12 @@ from app import app
 from flask import render_template
 from getpremierleaguescores import *
 
-@app.route('/')
-@app.route('/index')
-def index():
-
-	client_id = 'CO8F17n36tkXeg'
-	client_secret = 'PsMWW7027eHFMyMzeJPLaEJ5h_U'
-	user_agent = 'my user agent'
-	soup = getLiveScores()
+def display_everything(link="http://www.livescores.com/soccer/england/premier-league", league="premier-league"):
+	soup = getLiveScores(link)
 	#a = printTheScores(getArsenalGame(getLiveScores()))
 	#getGoalFromReddit(a[0],a[1])
 
-	prem_links = getPremierLeagueLinks(soup)
+	prem_links = getPremierLeagueLinks(soup,league)
 	display_links = []
 	check_duplicate = []
 	for game in prem_links:
@@ -38,7 +32,34 @@ def index():
 					pass
 		display_links.append(output_links)
 	
+	return display_links
+
+
+
+@app.route('/')
+@app.route('/index')
+def index():
 	return render_template('index.html',
 							title = 'ShowMeTheGoals',
 							subheader = 'A work in progress',
-							links = display_links)
+							links = display_everything())
+
+
+
+@app.route('/europa-league')
+def europa_league():
+	return render_template('index.html',
+							title = 'ShowMeTheGoals',
+							subheader = 'A work in progress',
+							links = display_everything("http://www.livescores.com/soccer/europa-league","europa-league"))
+
+
+@app.route('/champions-league')
+def champions_league():
+	return render_template('index.html',
+							title = 'ShowMeTheGoals',
+							subheader = 'A work in progress',
+							links = display_everything("http://www.livescores.com/soccer/champions-league", "champions-league"))
+	
+
+	
