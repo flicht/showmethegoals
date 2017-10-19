@@ -37,6 +37,7 @@ def index():
 				else:
 					pass
 		display_links.append(output_links)
+	
 	return render_template('index.html',
 							title = 'ShowMeTheGoals',
 							subheader = 'A work in progress',

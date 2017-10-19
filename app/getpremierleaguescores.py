@@ -36,7 +36,7 @@ dict_of_subreddits = {
 	}
 
 def getLiveScores():
-	res = requests.get("http://www.livescores.com/soccer/england/premierleague")
+	res = requests.get("http://www.livescores.com/soccer/champions-league")
 	res.raise_for_status()
 	soup = bs4.BeautifulSoup(res.text, 'html.parser')
 	return soup
@@ -53,7 +53,7 @@ def getPremierLeagueLinks(soup):
 		except IndexError:
 			pass
 	
-	matches = [x for x in list_of_links if 'premier-league' in x] #to get the match you want change team as a global variable. maybe later could do all premier league matches? or all matches?
+	matches = [x for x in list_of_links if 'champions-league' in x] #to get the match you want change team as a global variable. maybe later could do all premier league matches? or all matches?
 
 	return matches
 
@@ -173,11 +173,11 @@ def getGoalLinksFromReddit(array_of_teams_goalscorers):
 	for scorer in home_goalscorers:
 		posts = reddit.subreddit('soccer').search( scorer.split()[-1] + ' ' + away_team.split()[0], sort='new', time_filter='month')
 		
-		if dict_of_subreddits[home_team.lower()] != '':
-			team_subreddit_posts = reddit.subreddit(dict_of_subreddits[home_team.lower()]).search( scorer.split()[-1] + ' ' + away_team, sort='new', time_filter='month')
-			for post in team_subreddit_posts:
-				if len(post.title) < max_title_length:
-					stream_links_and_titles[0].append([post.title,post.url])
+		# if dict_of_subreddits[home_team.lower()] != '':
+		# 	team_subreddit_posts = reddit.subreddit(dict_of_subreddits[home_team.lower()]).search( scorer.split()[-1] + ' ' + away_team, sort='new', time_filter='month')
+		# 	for post in team_subreddit_posts:
+		# 		if len(post.title) < max_title_length:
+		# 			stream_links_and_titles[0].append([post.title,post.url])
 		
 		for post in posts:
 			if len(post.title) < max_title_length:
@@ -186,11 +186,11 @@ def getGoalLinksFromReddit(array_of_teams_goalscorers):
 	for scorer in away_goalscorers:
 		posts = reddit.subreddit('soccer').search( scorer.split()[-1] + ' ' + home_team.split()[0], sort='new', time_filter='month')
 		
-		if dict_of_subreddits[away_team.lower()] != '':
-			team_subreddit_posts = reddit.subreddit(dict_of_subreddits[away_team.lower()]).search( scorer.split()[-1] + ' ' + home_team, sort='new', time_filter='month')
-			for post in team_subreddit_posts:
-				if len(post.title) < max_title_length:
-					stream_links_and_titles[1].append([post.title,post.url])
+		# if dict_of_subreddits[away_team.lower()] != '':
+		# 	team_subreddit_posts = reddit.subreddit(dict_of_subreddits[away_team.lower()]).search( scorer.split()[-1] + ' ' + home_team, sort='new', time_filter='month')
+		# 	for post in team_subreddit_posts:
+		# 		if len(post.title) < max_title_length:
+		# 			stream_links_and_titles[1].append([post.title,post.url])
 
 		for post in posts:
 			if len(post.title)< max_title_length:

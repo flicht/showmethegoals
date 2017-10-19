@@ -1,18 +1,45 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <title>{{ title }}</title>
+     <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   </head>
   <body>
 
 	<h1>{{ title }}</h1>
     <h3><i>{{ subheader }}</i></h3>
-    {% for game in links %}
+   <!--  {% for game in links %}
 		<p><b>{{ game[0]}}</b></p>
     	{% for link in game[1:] %}
 			<div><p  style = 'text-indent: 50px'><a href="{{ link[1] }}">{{ link[0] }}</a></p></div>
     	{% endfor %}
     {% endfor %}
+ -->
+  <table class="table table-sm">
+  <thead class="thead-inverse" >
+    <tr>
+      <th>Game</th>
+      <th>Goals</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for game in links %}
+    <tr>
+      <td><b>{{ game[0]}}</b></td>
+      <td>
+    {% for link in game[1:] %}
+      <p><a href="{{ link[1] }}">{{ link[0] }} </a></p> 
+
+    
+   {% endfor %}</td>
+    {% endfor %}</tr>
+  </tbody>
+</table>
 
   </body>
-  </body>
+  
 </html>
