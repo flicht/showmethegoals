@@ -196,8 +196,6 @@ def getGoalLinksFromReddit(array_of_teams_goalscorers):
 	for scorer in away_goalscorers:
 		posts = reddit.subreddit('soccer').search( scorer.split()[-1] + ' ' + home_team.split()[0], sort='new', time_filter='month')
 
-		if away_team.lower() == "arsenal":
-			posts1 = reddit.subreddit('soccer').search( scorer.split()[-1] + ' ' + 'belgrade' , sort='new', time_filter='month')
 
 			for post in posts1:
 				stream_links_and_titles[1].append([post.title, post.url])
