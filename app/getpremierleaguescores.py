@@ -180,14 +180,14 @@ def getGoalLinksFromReddit(array_of_teams_goalscorers):
 	reddit = praw.Reddit(client_id = client_id, client_secret = client_secret, user_agent=user_agent)
 	max_title_length = 80
 
-	if 'oe' in scorer:
-		scorer.replace('oe','e')
-
-
-	if 'ue' in scorer:
-		scorer.replace('ue','e')
+	
 
 	for scorer in home_goalscorers:
+
+		if 'oe' in scorer:
+			scorer = scorer.replace('oe','e')
+		if 'ue' in scorer:
+			scorer = scorer.replace('ue','e')
 		posts = reddit.subreddit('soccer').search( scorer.split()[-1] + ' ' + away_team.split()[0], sort='new', time_filter='month')
 		
 
@@ -202,6 +202,12 @@ def getGoalLinksFromReddit(array_of_teams_goalscorers):
 				stream_links_and_titles[1].append([post.title, post.url])
 
 	for scorer in away_goalscorers:
+		if 'oe' in scorer:
+			scorer = scorer.replace('oe','e')
+
+
+		if 'ue' in scorer:
+			scorer = scorer.replace('ue','e')
 		posts = reddit.subreddit('soccer').search( scorer.split()[-1] + ' ' + home_team.split()[0], sort='new', time_filter='month')
 
 		
