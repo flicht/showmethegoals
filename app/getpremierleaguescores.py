@@ -183,6 +183,7 @@ def getGoalLinksFromReddit(array_of_teams_goalscorers):
 	
 
 	for scorer in home_goalscorers:
+		scorer = scorer.lower()
 
 		if 'oe' in scorer:
 			scorer = scorer.replace('oe','o')
