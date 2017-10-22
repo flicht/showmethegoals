@@ -203,6 +203,7 @@ def getGoalLinksFromReddit(array_of_teams_goalscorers):
 				stream_links_and_titles[1].append([post.title, post.url])
 
 	for scorer in away_goalscorers:
+		scorer = scorer.lower()
 		if 'oe' in scorer:
 			scorer = scorer.replace('oe','o')
 
