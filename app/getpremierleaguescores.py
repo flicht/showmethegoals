@@ -179,6 +179,14 @@ def getGoalLinksFromReddit(array_of_teams_goalscorers):
 
 	reddit = praw.Reddit(client_id = client_id, client_secret = client_secret, user_agent=user_agent)
 	max_title_length = 80
+
+	if 'oe' in scorer:
+		scorer.replace('oe','e')
+
+
+	if 'ue' in scorer:
+		scorer.replace('ue','e')
+
 	for scorer in home_goalscorers:
 		posts = reddit.subreddit('soccer').search( scorer.split()[-1] + ' ' + away_team.split()[0], sort='new', time_filter='month')
 		
