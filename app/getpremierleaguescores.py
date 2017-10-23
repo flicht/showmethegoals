@@ -187,8 +187,8 @@ def getGoalLinksFromReddit(array_of_teams_goalscorers):
 
 		if 'oe' in scorer:
 			scorer = scorer.replace('oe','o')
-		if 'ue' in scorer:
-			scorer = scorer.replace('ue','u')
+		# if 'ue' in scorer:
+		# 	scorer = scorer.replace('ue','u')
 		posts = reddit.subreddit('soccer').search( scorer.split()[-1] + ' ' + away_team.split()[0], sort='new', time_filter='month')
 		
 
@@ -208,8 +208,8 @@ def getGoalLinksFromReddit(array_of_teams_goalscorers):
 			scorer = scorer.replace('oe','o')
 
 
-		if 'ue' in scorer:
-			scorer = scorer.replace('ue','u')
+		# if 'ue' in scorer:
+		# 	scorer = scorer.replace('ue','u')
 
 		posts = reddit.subreddit('soccer').search( scorer.split()[-1] + ' ' + home_team.split()[0], sort='new', time_filter='month')
 
