@@ -17,14 +17,17 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item {%if request.path == '/index' %} active {%endif%}">
         <a class="nav-link" href="/index">Premier League <!-- <span class="sr-only">(current)</span> --></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item {%if request.path == '/champions-league' %} active {%endif%}">
         <a class="nav-link" href="/champions-league">Champions League</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item {%if request.path == 'europa-league' %} active {%endif%}">
         <a class="nav-link" href="/europa-league">Europa League</a>
+      </li>
+      <li class="nav-item {%if request.path == 'league-cup' %} active {%endif%}">
+        <a class="nav-link" href="/league-cup">League Cup</a>
       </li>
     </ul>
     <!-- <form class="form-inline my-2 my-lg-0">

@@ -60,6 +60,15 @@ def champions_league():
 							title = 'ShowMeTheGoals',
 							subheader = 'A work in progress',
 							links = display_everything("http://www.livescores.com/soccer/champions-league", "champions-league"))
+
+@app.route('/league-cup')
+def league_cup():
+	return render_template('index.html',
+							title = 'ShowMeTheGoals',
+							subheader = 'A work in progress',
+							links = display_everything("http://www.livescores.com/soccer/england/carling-cup","carling-cup"))
+
+
 	
 
 	
