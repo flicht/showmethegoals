@@ -1,6 +1,7 @@
 from app import app
 from flask import render_template
 from getpremierleaguescores import *
+import json
 
 def display_everything(link="http://www.livescores.com/soccer/england/premier-league", league="premier-league"):
 	soup = getLiveScores(link)
@@ -21,7 +22,7 @@ def display_everything(link="http://www.livescores.com/soccer/england/premier-le
 		for i in range(2):
 			
 			for goal in goal_links[i][1:]:
-				if 'imgtc' in goal[1] or 'streamable' in goal[1]:	
+				if 'imgtc' in goal[1] or 'streamable' in goal[1] or 'arsenalist' in goal[1] or clippit in goal[1]:	
 					if goal[1] in check_duplicate:
 						pass
 					else:
@@ -31,6 +32,11 @@ def display_everything(link="http://www.livescores.com/soccer/england/premier-le
 				else:
 					pass
 		display_links.append(output_links)
+
+		with open("thegoals.json","r+w") as file:
+			for i in display_links:
+					json.dump( i, file)
+
 	
 	return display_links
 

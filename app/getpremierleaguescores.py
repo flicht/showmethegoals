@@ -189,7 +189,7 @@ def getGoalLinksFromReddit(array_of_teams_goalscorers):
 			scorer = scorer.replace('oe','o')
 		# if 'ue' in scorer:
 		# 	scorer = scorer.replace('ue','u')
-		posts = reddit.subreddit('soccer').search( scorer.split()[-1] + ' ' + away_team.split()[0], sort='new', time_filter='month')
+		posts = reddit.subreddit('soccer').search( scorer.split()[-1] + ' ' + away_team.split()[0], sort='new', time_filter='week')
 		
 
 		# if dict_of_subreddits[home_team.lower()] != '':
@@ -208,10 +208,10 @@ def getGoalLinksFromReddit(array_of_teams_goalscorers):
 			scorer = scorer.replace('oe','o')
 
 
-		# if 'ue' in scorer:
-		# 	scorer = scorer.replace('ue','u')
+				# if 'ue' in scorer:
+				# 	scorer = scorer.replace('ue','u')
 
-		posts = reddit.subreddit('soccer').search( scorer.split()[-1] + ' ' + home_team.split()[0], sort='new', time_filter='month')
+		posts = reddit.subreddit('soccer').search( scorer.split()[-1] + ' ' + home_team.split()[0], sort='new', time_filter='week')
 
 		
 		# if dict_of_subreddits[away_team.lower()] != '':
@@ -249,7 +249,7 @@ def main():
 		for i in range(2):
 			
 			for goal in game_links[i][1:]:
-				if 'imgtc' in goal[1] or 'streamable' in goal[1]:	
+				if 'imgtc' in goal[1] or 'streamable' in goal[1] or 'arsenalist' in goal[1]:	
 					if goal[1] in check_duplicate:
 						pass
 					else:
