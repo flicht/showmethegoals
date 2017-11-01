@@ -33,6 +33,10 @@ def display_everything(link="http://www.livescores.com/soccer/england/premier-le
 					pass
 		display_links.append(output_links)
 
+
+	with open("database.json", "r+w") as json_file:
+		fred = json.loads(json_file.read())
+
 		# with open("thegoals.json","r+w") as file:
 		# 	for i in display_links:
 		# 			json.dump( i, file)
@@ -48,7 +52,8 @@ def index():
 	return render_template('index.html',
 							title = 'ShowMeTheGoals',
 							subheader = 'A work in progress',
-							links = display_everything())
+							links = display_everything(),
+							fred = fred)
 
 
 
@@ -57,7 +62,8 @@ def europa_league():
 	return render_template('index.html',
 							title = 'ShowMeTheGoals',
 							subheader = 'A work in progress',
-							links = display_everything("http://www.livescores.com/soccer/europa-league","europa-league"))
+							links = display_everything("http://www.livescores.com/soccer/europa-league","europa-league"),
+							fred = fred)
 
 
 @app.route('/champions-league')
@@ -65,11 +71,13 @@ def champions_league():
 	return render_template('index.html',
 							title = 'ShowMeTheGoals',
 							subheader = 'A work in progress',
-							links = display_everything("http://www.livescores.com/soccer/champions-league", "champions-league"))
+							links = display_everything("http://www.livescores.com/soccer/champions-league", "champions-league"),
+							fred = fred)
 
 @app.route('/league-cup')
 def league_cup():
 	return render_template('index.html',
 							title = 'ShowMeTheGoals',
 							subheader = 'A work in progress',
-							links = display_everything("http://www.livescores.com/soccer/england/carling-cup","carling-cup"))
+							links = display_everything("http://www.livescores.com/soccer/england/carling-cup","carling-cup"),
+							fred = fred)

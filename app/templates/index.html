@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>{{ title }}</title>
+    <title>{{ fred }}</title>
      <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -62,9 +62,9 @@
       <td><b>{{ game[0]}}</b></td>
       <td>
     {% for link in game[1:] %}
-      <p><a href="{{ link[1] }}">{{ link[0] }} </a></p> 
+      <p><a href="{{ link[1] }}">{{ link[0] }} </a></p>
 
-    
+
    {% endfor %}</td>
     {% endfor %}</tr>
   </tbody>
@@ -87,5 +87,5 @@
 
 
   </body>
-  
+
 </html>
