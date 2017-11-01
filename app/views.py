@@ -15,29 +15,29 @@ def display_everything(link="http://www.livescores.com/soccer/england/premier-le
 		output_links = []
 		mug_of_soup = getSoupFromLink(game)
 		teams_goalscorers = getTheGoalscorers(mug_of_soup)
-		
+
 		goal_links = getGoalLinksFromReddit(teams_goalscorers)
 		fixture = goal_links[0][0] +' vs. ' + goal_links[1][0]
 		output_links.append(fixture)
 		for i in range(2):
-			
+
 			for goal in goal_links[i][1:]:
-				if 'imgtc' in goal[1] or 'streamable' in goal[1] or 'arsenalist' in goal[1] or clippit in goal[1]:	
+				if 'imgtc' in goal[1] or 'streamable' in goal[1] or 'arsenalist' in goal[1] or 'clippit' in goal[1]:
 					if goal[1] in check_duplicate:
 						pass
 					else:
 						check_duplicate.append(goal[1])
-						output_links.append([goal[0],goal[1]]) 
-							
+						output_links.append([goal[0],goal[1]])
+
 				else:
 					pass
 		display_links.append(output_links)
 
-		with open("thegoals.json","r+w") as file:
-			for i in display_links:
-					json.dump( i, file)
+		# with open("thegoals.json","r+w") as file:
+		# 	for i in display_links:
+		# 			json.dump( i, file)
 
-	
+
 	return display_links
 
 
@@ -73,8 +73,3 @@ def league_cup():
 							title = 'ShowMeTheGoals',
 							subheader = 'A work in progress',
 							links = display_everything("http://www.livescores.com/soccer/england/carling-cup","carling-cup"))
-
-
-	
-
-	
