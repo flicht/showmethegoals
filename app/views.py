@@ -22,7 +22,7 @@ def display_everything(link="http://www.livescores.com/soccer/england/premier-le
 		for i in range(2):
 
 			for goal in goal_links[i][1:]:
-				if 'imgtc' in goal[1] or 'streamable' in goal[1] or 'arsenalist' in goal[1] or 'clippit' in goal[1]:
+				if 'imgtc' in goal[1] or 'streamable' in goal[1] or 'arsenalist' in goal[1] or 'clippit' in goal[1] or 'streamja' in goal[1]:
 					if goal[1] in check_duplicate:
 						pass
 					else:
