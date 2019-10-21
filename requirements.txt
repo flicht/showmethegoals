@@ -2,7 +2,7 @@ Babel==2.5.1
 beautifulsoup4==4.6.0
 bpython==0.16
 bs4==0.0.1
-Flask==0.12.2
+Flask==1.0
 Flask-Babel==0.11.2
 Flask-Login==0.4.0
 Flask-Mail==0.9.1
