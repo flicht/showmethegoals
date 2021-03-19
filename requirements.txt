@@ -11,7 +11,7 @@ Flask-SQLAlchemy==2.3.2
 Flask-WhooshAlchemy==0.56
 Flask-WTF==0.14.2
 gunicorn==19.6.0
-Jinja2==2.9.6
+Jinja2==2.11.3
 praw==5.1.0
 prawcore==0.12.0
 requests==2.7.0
